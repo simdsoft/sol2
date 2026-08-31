@@ -123,7 +123,11 @@ namespace sol {
 				if (t == type::none || t == type::lua_nil) {
 					return nullptr;
 				}
+				#if defined(SOL_AXMOL_STD_FUNCTION_GETTER)
+				return SOL_AXMOL_STD_FUNCTION_GETTER(Signature, L, index);
+				#else
 				return get_std_func(return_types(), L, index);
+				#endif
 			}
 		};
 
